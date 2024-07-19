@@ -30,48 +30,25 @@
 
     <div class="container section fade-in" id="portfolio">
         <h2>Portfolio</h2>
-        <p>This section will fade in as you scroll down the page.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan convallis nisi, ut hendrerit dui scelerisque eget. Proin blandit magna ut nunc sagittis laoreet. Nullam lobortis lectus ac tellus pharetra, sit amet scelerisque risus tempor. Curabitur dapibus consectetur quam nec hendrerit. Integer at mauris orci. Duis pharetra sit amet ligula et aliquam. Donec in varius eros. Aenean et tortor tincidunt, lobortis libero sit amet, tristique mauris.</p>
+        <p>Nulla facilisi. Nullam sed diam eu magna convallis sodales vel a dolor. Duis ut lobortis risus. Fusce suscipit ultricies augue, sit amet rhoncus elit eleifend vel. Donec a mi sed ipsum ultricies consequat. Sed tincidunt, quam id iaculis lacinia, justo orci consequat velit, eget semper felis magna nec enim. Mauris luctus, quam nec condimentum viverra, nunc eros volutpat augue, ut efficitur lacus tortor in lorem.</p>
+        <p>Phasellus suscipit nunc in nisl consequat hendrerit. Nam nec massa tortor. Vivamus ac ultricies eros. Nunc aliquet velit nec vehicula rutrum. Aenean lobortis justo at tellus pretium, a efficitur nunc ultrices. Duis dictum dui vel ultricies auctor. Integer et nisi sit amet felis hendrerit pellentesque. Suspendisse vitae luctus turpis, vel tristique leo.</p>
     </div>
 
     <div class="container section fade-in" id="contactme">
         <h2>Contact Me</h2>
-        <p>This section will also fade in as you scroll further down.</p>
+        <p>Feel free to reach out to me using the contact form below:</p>
+        <form action="submit_contact_form.php" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
     </div>
 
-    <script>
-        // Function to scroll to section smoothly
-        function scrollToSection(sectionId) {
-            var section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Function to add active class when element is scrolled into view
-        function checkScroll() {
-            var fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach(function(elem) {
-                if (isElementInViewport(elem)) {
-                    elem.classList.add('active');
-                }
-            });
-        }
-
-        // Function to check if element is in viewport
-        function isElementInViewport(el) {
-            var rect = el.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
-
-        // Listen for scroll events and check elements on scroll
-        window.addEventListener('scroll', checkScroll);
-        // Initial check when the page loads
-        checkScroll();
-    </script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
