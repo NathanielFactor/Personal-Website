@@ -74,3 +74,25 @@ nav a::before{
 nav a:hover::before{
     width: 100%;
 }
+
+/* Define styles for the elements you want to animate */
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.fade-in.active {
+    opacity: 1;
+}
+
+/* Additional styles for layout and presentation */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}

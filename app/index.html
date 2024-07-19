@@ -1,43 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
-    <title>Navbar</title>
-    <script>
-        function loadContent(contentType) {
-            // Load content dynamically based on the clicked link
-            var container = document.getElementById("content-container");
-            var url = contentType + ".html";
-
-            // Use fetch to load the content from the file
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    container.innerHTML = data;
-                });
-            }
-    </script>
+    <title>Smooth Scroll Navigation</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
     <header>
         <div class="container">
-            <a href="#" onclick="loadContent('explore')">
-                <img src="images/236-2362818_anime-sempai-animegirl-heart-kawaii-cute-anime-girl.png" alt="logo" class="logo">
+            <a href="#">
+                <img src="path/to/your/logo.png" alt="logo" class="logo">
             </a>
             <nav>
                 <ul>
-                    <li><a href="#" onclick="loadContent('explore')">Explore</a></li>
-                    <li><a href="#" onclick="loadContent('maps')">Maps</a></li>
-                    <li><a href="#" onclick="loadContent('reviews')">Reviews</a></li>
-                    <li><a href="#" onclick="loadContent('about_us')">about_us</a></li>
+                    <li><a href="#contactme" onclick="scrollToSection('contactme')">Contact</a></li>
+                    <li><a href="#portfolio" onclick="scrollToSection('portfolio')">Portfolio</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Container to load content dynamically -->
-    <div id="content-container"></div>
+    <div id="content-container">
+        <!-- Initial content that may load dynamically -->
+        <div class="container section fade-in" id="intro">
+            <h2>Welcome to My Website</h2>
+            <p>This is some introductory content that fades in as you scroll.</p>
+        </div>
+    </div>
+
+    <div class="container section fade-in" id="portfolio">
+        <h2>Portfolio</h2>
+        <p>This section will fade in as you scroll down the page.</p>
+    </div>
+
+    <div class="container section fade-in" id="contactme">
+        <h2>Contact Me</h2>
+        <p>This section will also fade in as you scroll further down.</p>
+    </div>
+
+    <script>
+        // Function to scroll to section smoothly
+        function scrollToSection(sectionId) {
+            var section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Function to add active class when element is scrolled into view
+        function checkScroll() {
+            var fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(function(elem) {
+                if (isElementInViewport(elem)) {
+                    elem.classList.add('active');
+                }
+            });
+        }
+
+        // Function to check if element is in viewport
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Listen for scroll events and check elements on scroll
+        window.addEventListener('scroll', checkScroll);
+        // Initial check when the page loads
+        checkScroll();
+    </script>
 </body>
 </html>
