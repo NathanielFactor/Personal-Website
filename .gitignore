@@ -1,0 +1,11 @@
+# Node.js dependencies
+node_modules/
+package-lock.json
+package.json
+
+# dotenv environment variable files
+.env
+
+# database
+db/
+Conversations.db

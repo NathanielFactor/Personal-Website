@@ -1,46 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Smooth Scroll Navigation</title>
+    <title>Nathaniel Factor</title>
     <link href="css/styles.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
     <header>
         <div class="container">
             <a href="#">
-                <img src="app\images\236-2362818_anime-sempai-animegirl-heart-kawaii-cute-anime-girl.png" alt="logo" class="logo">
+                <img src="/app/images/236-2362818_anime-sempai-animegirl-heart-kawaii-cute-anime-girl.png" alt="logo" class="logo">
             </a>
             <nav>
                 <ul>
-                    <li><a href="#contactme" onclick="scrollToSection('contactme')">Contact</a></li>
+                    <li><a href="#" onclick="scrollToSection('home')">Home</a></li>
                     <li><a href="#portfolio" onclick="scrollToSection('portfolio')">Portfolio</a></li>
+                    <li><a href="#contactme" onclick="scrollToSection('contactme')">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <div class="flex-container">
+        <img src="/app/images/background_cmd.jpg" alt="Eva" class="main">
+    </div>
+
+    <div class="container">
+        <h1>Mizuhara Chizuru</h1>
+        <div id="ai-response-form">
+            <h2>Generate AI Response</h2>
+            <form id="aiForm">
+                <label for="userMessage">Enter your message:</label>
+                <input type="text" id="userMessage" name="userMessage" required>
+                <button type="submit">Generate Response</button>
+            </form>
+            <div id="responseContainer" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                <h3>AI Response:</h3>
+                <p id="aiResponseText"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        async function fetchMessages() {
+            try {
+                const response = await fetch('http://localhost:5000/api/messages');
+                const messages = await response.json();
+                const messagesDiv = document.getElementById('messages');
+                messagesDiv.innerHTML = messages.map(message => `
+                    <div class="message">${message}</div>
+                `).join('');
+            } catch (error) {
+                console.error('Error fetching messages:', error);
+            }
+        }
+
+        document.getElementById('aiForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const userMessage = document.getElementById('userMessage').value;
+
+            const response = await fetch('/generate-response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userMessage })
+            });
+
+            const data = await response.json();
+            document.getElementById('aiResponseText').innerText = data.response;
+        });
+
+        // Fetch messages when the page loads
+        fetchMessages();
+    </script>
+
+
+    <div class="spacer"></div>
+
+
     <div id="content-container">
-        <!-- Initial content that may load dynamically -->
         <div class="container section fade-in" id="intro">
             <h2>Welcome to My Website</h2>
-            <p>This is some introductory content that fades in as you scroll.</p>
+            <img src="/app/images/236-2362818_anime-sempai-animegirl-heart-kawaii-cute-anime-girl.png" alt="logo" class="item">
+            <p> Hi! <br>
+                Welcome to my website. I am a second-year varsity student-athlete at McGill University,
+                studying Computer Engineering with a minor in Applied Artificial Intelligence.
+                Proficient in Python and Java, interested in AI/ML and Software Development.</p>
         </div>
     </div>
 
+
+    <div class="spacer"></div>
+
+
     <div class="container section fade-in" id="portfolio">
         <h2>Portfolio</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan convallis nisi, ut hendrerit dui scelerisque eget. Proin blandit magna ut nunc sagittis laoreet. Nullam lobortis lectus ac tellus pharetra, sit amet scelerisque risus tempor. Curabitur dapibus consectetur quam nec hendrerit. Integer at mauris orci. Duis pharetra sit amet ligula et aliquam. Donec in varius eros. Aenean et tortor tincidunt, lobortis libero sit amet, tristique mauris.</p>
-        <br>
-        <br>
-        <p>Nulla facilisi. Nullam sed diam eu magna convallis sodales vel a dolor. Duis ut lobortis risus. Fusce suscipit ultricies augue, sit amet rhoncus elit eleifend vel. Donec a mi sed ipsum ultricies consequat. Sed tincidunt, quam id iaculis lacinia, justo orci consequat velit, eget semper felis magna nec enim. Mauris luctus, quam nec condimentum viverra, nunc eros volutpat augue, ut efficitur lacus tortor in lorem.</p>
-        <br>
-        <br>
-        <p>Phasellus suscipit nunc in nisl consequat hendrerit. Nam nec massa tortor. Vivamus ac ultricies eros. Nunc aliquet velit nec vehicula rutrum. Aenean lobortis justo at tellus pretium, a efficitur nunc ultrices. Duis dictum dui vel ultricies auctor. Integer et nisi sit amet felis hendrerit pellentesque. Suspendisse vitae luctus turpis, vel tristique leo.</p>
+        <img src="/app/images/236-2362818_anime-sempai-animegirl-heart-kawaii-cute-anime-girl.png" alt="logo" class="item">
+        <p> <b>Robotics </b><br>
+            <b>Mizuhara Chizuru</b> <br>
+            <b>Autonomous Robot</b> <br>
+            <b>Hackathons</b> <br>
+        </p>
     </div>
+
+
+    <div class="spacer"></div>
+
 
     <div class="container section fade-in" id="contactme">
         <h2>Contact Me</h2>
+        <img src="/app/images/236-2362818_anime-sempai-animegirl-heart-kawaii-cute-anime-girl.png" alt="logo" class="item">
         <p>Feel free to reach out to me using the contact form below:</p>
         <form action="submit_contact_form.php" method="POST">
             <label for="name">Name:</label>
@@ -53,6 +125,16 @@
         </form>
     </div>
 
+
+    <div class="spacer"></div>
+
+
+    <div class="container">
+        <p>Widgets</p>
+    </div>
+
+
     <script src="js/scripts.js"></script>
+
 </body>
 </html>

@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const elementBottom = elementTop + element.offsetHeight;
 
             if (elementBottom > scrollTop && elementTop < scrollTop + windowHeight) {
-                element.classList.add('visible');
+                element.classList.add('active');
             }
-         });
+        });
     };
 
     // Check visibility on scroll and initial load

@@ -1,48 +1,88 @@
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
-body{
+html, body {
     margin: 0;
-    background: #383535;
-    font-family: 'Lobster', cursive;
-    font-weight: 300;
+    padding: 0;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    overflow-y: auto;
 }
 
-.container{
-    width: 100%;
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    height: 1000px; /* Adjust height as needed */
+}
+
+.center-image {
+    max-width: 50%;
+    height: auto;
+}
+
+.logo {
+    max-width: 80px; /* Adjust the maximum width as needed */
+    height: auto;    /* Maintain aspect ratio */
+}
+
+
+.container {
+    max-width: 100%; /* Ensures container fits within viewport */
     margin: 0 auto;
+    padding: 20px;
 }
- 
+
+.section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #ffebeb;
+}
+
+/* Ensure the header or nav has a fixed position */
 header {
-    background: #55daa5;
-}
-header::after{
-    content: '';
-    display: table;
-    clear: both;
-}
-
-.logo{
-    max-width: 5%;
-    max-height: 5%;
-    float: left;
-    padding: 10px 0;
+    background: #def5eb;
+    width: 100%;
+    position: fixed; /* Make the header fixed */
+    top: 0; /* Stick to the top */
+    left: 0; /* Align with the left edge */
+    padding: 1px; /* Add padding for aesthetics */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: Add shadow for better visibility */
 }
 
-nav{
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+/* Adjust the margin-top of the body or content-container to avoid overlap with fixed header */
+body {
+    margin-top: 100px; /* Adjust this value based on the height of your header */
+}
+
+/* Optional: Adjust nav styling */
+nav {
     float: right;
+    display: flex;
 }
 
-nav ul{
+nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-nav li{
+nav li {
     display: inline-block;
-    margin-left: 70px;
+    margin-left: 50px; /* Adjust spacing as needed */
     padding-top: 23px;
-
-    position: relative;
 }
 
 nav a {
@@ -50,49 +90,51 @@ nav a {
     text-decoration: none;
     text-transform: uppercase;
     font-size: 14px;
-
     padding: 15px 20px;
     display: inline-block;
 }
-nav a:hover{
-    color: #000;
-}
-nav a::before{
-    content:'';
-    display: block;
-    height: 5px;
-    width: 100%;
-    background-color: #444;
 
-    position: absolute;
-    top: 0;
-    width: 0%;
-
-    transition: all ease-in-out 300ms;
+/* Clear floats */
+header::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
-nav a:hover::before{
-    width: 100%;
+.spacer{
+    height: 100px;
 }
 
-/* Define styles for the elements you want to animate */
-.fade-in {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-.fade-in.active {
-    opacity: 1;
+.item{
+    max-width: 100%;
+    height: 200px;
+    text-align: center;
 }
 
-/* Additional styles for layout and presentation */
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
+.main{
+    max-width: 100%;
+    height: auto;
+    text-align: center;
 }
-.section {
-    margin-bottom: 40px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
+
+
+/* Custom styles for the response container */
+#responseContainer {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 2px;
+    background-color: #fff8f8;
+}
+
+#responseContainer h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+#responseContainer p {
+    margin: 10px 0 0;
+    font-size: 1em;
+    color: #555;
 }
