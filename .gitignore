@@ -9,3 +9,7 @@ package.json
 # database
 db/
 Conversations.db
+
+#build and functions
+/build
+/functions
